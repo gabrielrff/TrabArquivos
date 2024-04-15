@@ -5,3 +5,17 @@
 
 
 #define MAX_LENGTH 1000
+
+
+
+
+
+
+
+FILE* openCsvFile(FILE* csvFileName);
+
+
+bool isEmpty(char* buffer);
+
+
+REGISTER* readCsvFileLine(FILE* csvPointer);

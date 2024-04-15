@@ -148,10 +148,22 @@ char* getRegisterNac(REGISTER* register_){
 }
 
 
-int getSizeClubName(REGISTER* register_){
+int getRegisterSizeClubName(REGISTER* register_){
     return register_->sizeClubName;
 }
 
 char* getRegisterClubName(REGISTER* register_){
     return register_->clubName;
+}
+
+
+
+
+
+void freeRegister(REGISTER* register_){
+    free(register_->name);
+    free(register_->nac);
+    free(register_->clubName);
+
+    free(register_);
 }

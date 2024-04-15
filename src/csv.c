@@ -6,7 +6,7 @@ FILE* openCsvFile(FILE* csvFileName){
     FILE* filePointer = fopen(csvFileName,"r");
     if (filePointer == NULL){//Tratar melhor os erros
         perror("Erro ao abrir o arquivo");
-        return 0;
+        return NULL;
     }
 
     return filePointer;
@@ -21,16 +21,18 @@ bool isEmpty(char* buffer){
 }
 
 
-REGISTER* readCsvFileLine(FILE* csvPointer,REGISTER* register_){
+REGISTER* readCsvFileLine(FILE* csvPointer){
     
     char* line = (char*)malloc(MAX_LENGTH);
     if (!fgets(line,MAX_LENGTH,csvPointer))
         return NULL;
 
+    
+    REGISTER* register_ = createRegister();
     char* buffer;
     buffer = NULL;
     int camp = 1;
-    while ((buffer = strsep(&line,"")) != NULL){
+    while ((buffer = strsep(&line,",")) != NULL){
         switch (camp)
         {
             case 1:
@@ -47,8 +49,8 @@ REGISTER* readCsvFileLine(FILE* csvPointer,REGISTER* register_){
             
             case 3:
                 if (isEmpty(buffer)){
-                    setRegisterSizeName(register_,NULL_INTEGER);
-                    setRegisterName(register_,NULL_CHAR);
+                    setRegisterSizeName(register_,0);
+                    setRegisterName(register_,NULL);
                 }
                 else{
                     setRegisterName(register_,buffer);
@@ -58,8 +60,8 @@ REGISTER* readCsvFileLine(FILE* csvPointer,REGISTER* register_){
 
             case 4:
                 if (isEmpty(buffer)){
-                    setRegisterSizeNac(register_,NULL_INTEGER);
-                    setRegisterNac(register_,NULL_CHAR);
+                    setRegisterSizeNac(register_,0);
+                    setRegisterNac(register_,NULL);
                 }
                 else{
                     setRegisterNac(register_,buffer);
@@ -69,8 +71,8 @@ REGISTER* readCsvFileLine(FILE* csvPointer,REGISTER* register_){
 
             case 5:
                 if (isEmpty(buffer)){
-                    setRegisterSizeClubName(register_,NULL_INTEGER);
-                    setRegisterClubName(register_,NULL_CHAR);
+                    setRegisterSizeClubName(register_,0);
+                    setRegisterClubName(register_,NULL);
                 }
                 else{
                     setRegisterClubName(register_,buffer);
@@ -83,7 +85,5 @@ REGISTER* readCsvFileLine(FILE* csvPointer,REGISTER* register_){
             }
         free(buffer);
     }
-    
-
-
+    return register_;
 }

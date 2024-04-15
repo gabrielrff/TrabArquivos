@@ -52,6 +52,9 @@ int getRegisterSizeNac(REGISTER* register_);
 char* getRegisterNac(REGISTER* register_);
 
 
-int getSizeClubName(REGISTER* register_);
+int getRegisterSizeClubName(REGISTER* register_);
 
 char* getRegisterClubName(REGISTER* register_);
+
+
+void freeRegister(REGISTER* register_);

@@ -62,19 +62,19 @@ char getHeaderStatus(HEADER* header){
     return header->status;
 }
 
-void getHeaderTop(HEADER* header){
+long int getHeaderTop(HEADER* header){
     return header->top;
 }
 
-void getHeaderProxByteOffset(HEADER* header){
+long int getHeaderProxByteOffset(HEADER* header){
     return header->proxByteOffset;
 }
 
-void getHeaderNumRegArq(HEADER* header){
+int getHeaderNumRegArq(HEADER* header){
     return header->numRegArq;
 }
 
-void getHeaderNumRegRem(HEADER* header){
+int getHeaderNumRegRem(HEADER* header){
     return header->numRegRem;
 }
 
