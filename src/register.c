@@ -1,4 +1,4 @@
-#include "./inc/register.h"
+#include "register.h"
 
 
 
@@ -17,7 +17,7 @@ struct register_stc{
     char* nac;
 
     int sizeClubName;
-    char clubName;
+    char* clubName;
 };
 
 
@@ -74,10 +74,10 @@ void setRegisterSizeName(REGISTER* register_,int size){
 }
 
 void setRegisterName(REGISTER* register_,char* name){
-    register_->name = malloc(sizeof(register_->sizeName + 1));
-    strcpy(register_->name,name);
+    //register_->name = malloc(sizeof(register_->sizeName + 1));
+    register_->name = strdup(name);
 
-    free(name);
+    //free(name);
 }
 
 void setRegisterSizeNac(REGISTER* register_,int size){
@@ -85,10 +85,10 @@ void setRegisterSizeNac(REGISTER* register_,int size){
 }
 
 void setRegisterNac(REGISTER* register_,char* nac){
-    register_->nac = malloc(sizeof(register_->sizeNac + 1));
-    strcpy(register_->nac,nac);
+    //register_->nac = malloc(sizeof(register_->sizeNac + 1));
+    register_->nac = strdup(nac);
 
-    free(nac);
+    //free(nac);
 }
 
 
@@ -97,10 +97,10 @@ void setRegisterSizeClubName(REGISTER* register_,int size){
 }
 
 void setRegisterClubName(REGISTER* register_,char* clubName){
-    register_->clubName = malloc(sizeof(register_->sizeClubName + 1));
-    strcpy(register_->clubName,clubName);
+    //register_->clubName = malloc(sizeof(register_->sizeClubName + 1));
+    register_->clubName = strdup(clubName);
 
-    free(clubName);
+    //free(clubName);
 }
 
 
@@ -166,4 +166,32 @@ void freeRegister(REGISTER* register_){
     free(register_->clubName);
 
     free(register_);
+}
+
+
+
+
+void printRegister(REGISTER* register_){
+
+    //printf("%d\n",register_->id);
+
+    printf("Nome do Jogador: ");
+    if ((register_->sizeName != 0) && (register_->name[0] != '$'))
+        printf("%s\n",register_->name);
+    else
+        printf("SEM DADO\n");
+
+    printf("Nacionalidade do Jogador: ");    
+    if ((register_->sizeNac != 0) && (register_->nac[0] != '$'))
+        printf("%s\n",register_->nac);
+    else
+        printf("SEM DADO\n");        
+
+    printf("Clube do Jogador: ");
+    if ((register_->sizeClubName != 0) && (register_->clubName[0] != '$'))
+        printf("%s\n",register_->clubName);
+    else
+        printf("SEM DADO\n");  
+
+
 }

@@ -58,3 +58,6 @@ char* getRegisterClubName(REGISTER* register_);
 
 
 void freeRegister(REGISTER* register_);
+
+
+void printRegister(REGISTER* register_);

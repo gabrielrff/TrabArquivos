@@ -1,17 +1,27 @@
 CC=gcc
+CFLAGS=-Wall -Werror -g
 INCLUDES=./inc
-SOURCES= ./src/functionalities.c ./src/binary.c ./src/register.c ./src/header.c ./src/csv.c ./src/funcoes_fornecidas.c
+SRCDIR=./src
+SOURCES= $(SRCDIR)/functionalities.c \
+         $(SRCDIR)/binary.c \
+         $(SRCDIR)/register.c \
+         $(SRCDIR)/header.c \
+         $(SRCDIR)/csv.c \
+         $(SRCDIR)/funcoes_fornecidas.c 
 PROG=./main.c
 BINARY=./binary 
+INPUT_FILE = ./3.in
 
-all:
-	@$(CC) $(PROG) -Wall -Werror -g $(SOURCES) -I$(INCLUDES) -o $(BINARY)
+all: $(BINARY)
 
-run:
-	@$(BINARY) 
+$(BINARY): $(SOURCES)
+	@$(CC) $(CFLAGS) -I$(INCLUDES) $^ $(PROG) -o $@
 
-valgrind:
-	@-valgrind --leak-check=full --show-leak-kinds=all $(BINARY)
+run: $(BINARY) 
+	@$(BINARY) < $(INPUT_FILE)
+
+valgrind: $(BINARY)
+	@valgrind --leak-check=full --show-leak-kinds=all $(BINARY)
 
 clean:
-	@rm -rf *.o $(BINARY) 
+	@rm -rf $(BINARY)

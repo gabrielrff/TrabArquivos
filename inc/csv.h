@@ -12,7 +12,7 @@
 
 
 
-FILE* openCsvFile(FILE* csvFileName);
+FILE* openCsvFile(char* csvFileName);
 
 
 bool isEmpty(char* buffer);

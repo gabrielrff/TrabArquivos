@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define UNVALID_ARQ 0
-#define VALID_ARQ 1
+#define UNVALID_ARQ '0'
+#define VALID_ARQ '1'
 
 typedef struct header_stc HEADER;
 

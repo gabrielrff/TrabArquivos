@@ -1,5 +1,9 @@
 #include "funcoes_fornecidas.h"
 
+
+
+
+
 void binarioNaTela(char *nomeArquivoBinario) { /* Você não precisa entender o código dessa função. */
 
 	/* Use essa função para comparação no run.codes. Lembre-se de ter fechado (fclose) o arquivo anteriormente.

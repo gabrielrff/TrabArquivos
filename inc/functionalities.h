@@ -5,3 +5,4 @@
 
 
 void createTable(char* csvFileName, char* binaryFileName);
+void selectFrom(char* binaryFileName);

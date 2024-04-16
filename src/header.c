@@ -1,4 +1,4 @@
-#include "./inc/header.h"
+#include "header.h"
 
 struct header_stc{
     char status;
